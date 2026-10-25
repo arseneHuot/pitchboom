@@ -1,0 +1,45 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.pitchboom/pitchboom",
+  "title": "pitchboom",
+  "description": "Motion-design video ads from a product URL or brief: script, storyboard, voice-over, music, MP4.",
+  "version": "1.0.0",
+  "websiteUrl": "https://pitchboom.io/docs/mcp",
+  "repository": {
+    "url": "https://github.com/arseneHuot/pitchboom",
+    "source": "github"
+  },
+  "icons": [
+    {
+      "src": "https://pitchboom.io/brand/pitchboom-icon-512.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://pitchboom.io/api/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "pitchboom API key as a bearer token (Pro or Premium plan). Create it at https://pitchboom.io/settings/api.",
+          "value": "Bearer {api_key}",
+          "isRequired": true,
+          "isSecret": true,
+          "variables": {
+            "api_key": {
+              "description": "Personal pitchboom API key from https://pitchboom.io/settings/api.",
+              "isRequired": true,
+              "isSecret": true,
+              "format": "string",
+              "placeholder": "pb_live_..."
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

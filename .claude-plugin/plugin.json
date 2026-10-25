@@ -1,0 +1,26 @@
+{
+  "name": "pitchboom",
+  "version": "1.0.0",
+  "description": "Make motion-design video ads with pitchboom.io from Claude Code: brief, quote, approval, render and download. Adds the pitchboom MCP server and a skill.",
+  "author": {
+    "name": "pitchboom.io",
+    "email": "hello@pitchboom.io",
+    "url": "https://pitchboom.io"
+  },
+  "homepage": "https://pitchboom.io/docs/mcp",
+  "repository": "https://github.com/arseneHuot/pitchboom",
+  "license": "MIT",
+  "keywords": [
+    "pitchboom",
+    "mcp",
+    "video-ads",
+    "motion-design",
+    "ai-video",
+    "marketing"
+  ],
+  "icon": "./assets/pitchboom-icon-512.png",
+  "documentationUrl": "https://pitchboom.io/docs/mcp",
+  "supportUrl": "https://github.com/arseneHuot/pitchboom/issues",
+  "privacyPolicyUrl": "https://pitchboom.io/legal/privacy",
+  "termsOfServiceUrl": "https://pitchboom.io/legal/terms"
+}

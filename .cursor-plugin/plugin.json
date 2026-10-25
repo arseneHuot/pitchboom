@@ -1,0 +1,43 @@
+{
+  "name": "pitchboom",
+  "displayName": "pitchboom",
+  "version": "1.0.0",
+  "description": "Make motion-design video ads with pitchboom.io from a product URL or a brief: quote, approval, render and download through the pitchboom MCP server.",
+  "author": {
+    "name": "pitchboom.io",
+    "email": "hello@pitchboom.io"
+  },
+  "homepage": "https://pitchboom.io/docs/mcp",
+  "repository": "https://github.com/arseneHuot/pitchboom",
+  "license": "MIT",
+  "logo": "assets/pitchboom-icon-512.png",
+  "keywords": [
+    "pitchboom",
+    "mcp",
+    "video-ads",
+    "motion-design",
+    "ai-video",
+    "marketing"
+  ],
+  "category": "integrations",
+  "tags": [
+    "pitchboom",
+    "video",
+    "marketing",
+    "mcp"
+  ],
+  "variables": {
+    "type": "object",
+    "properties": {
+      "PITCHBOOM_API_KEY": {
+        "type": "string",
+        "title": "pitchboom API key",
+        "description": "Personal pitchboom API key (pb_live_...), created at https://pitchboom.io/settings/api. The MCP server needs the Pro or Premium plan."
+      }
+    },
+    "required": [
+      "PITCHBOOM_API_KEY"
+    ]
+  },
+  "mcpServers": "./mcp.json"
+}

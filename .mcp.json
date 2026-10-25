@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "pitchboom": {
+      "type": "http",
+      "url": "https://pitchboom.io/api/mcp",
+      "headers": {
+        "Authorization": "Bearer ${PITCHBOOM_API_KEY}"
+      }
+    }
+  }
+}

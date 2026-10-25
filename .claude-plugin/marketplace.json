@@ -1,0 +1,24 @@
+{
+  "name": "pitchboom",
+  "owner": {
+    "name": "pitchboom.io",
+    "email": "hello@pitchboom.io",
+    "url": "https://pitchboom.io"
+  },
+  "metadata": {
+    "description": "The pitchboom.io plugin for Claude Code: the pitchboom MCP server and a skill for making video ads."
+  },
+  "plugins": [
+    {
+      "name": "pitchboom",
+      "source": "./",
+      "description": "Make motion-design video ads with pitchboom.io: brief, quote, approval, render and download.",
+      "category": "marketing",
+      "tags": [
+        "video",
+        "ads",
+        "mcp"
+      ]
+    }
+  ]
+}

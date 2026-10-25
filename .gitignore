@@ -1,0 +1,13 @@
+# Secrets: API keys belong in your environment or your client's secret storage, never in this repository.
+.env
+.env.*
+*.pem
+*.key
+
+# MCP Registry login tokens written by mcp-publisher
+.mcpregistry_*
+
+# Local tooling and OS files
+node_modules/
+.DS_Store
+*.log
