@@ -196,7 +196,7 @@ const jsonTargets = [
     edit: (j) => {
       const header = j.remotes?.[0]?.headers?.find((h) => h.name === "Authorization");
       if (!header) die("server.json: no Authorization header in remotes[0].");
-      header.description = `pitchboom API key as a bearer token (${or(mcpPlans)} plan). Create it at https://pitchboom.io/settings/api.`;
+      header.description = `Optional: a pitchboom API key as a bearer token (${or(mcpPlans)} plan), from https://pitchboom.io/settings/api. Leave it empty to sign in with OAuth.`;
     },
   },
   {

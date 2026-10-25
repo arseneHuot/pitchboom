@@ -3,7 +3,7 @@
   "name": "io.pitchboom/pitchboom",
   "title": "pitchboom",
   "description": "Motion-design video ads from a product URL or brief: script, storyboard, voice-over, music, MP4.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "websiteUrl": "https://pitchboom.io/docs/mcp",
   "repository": {
     "url": "https://github.com/arseneHuot/pitchboom",
@@ -25,14 +25,14 @@
       "headers": [
         {
           "name": "Authorization",
-          "description": "pitchboom API key as a bearer token (Pro or Premium plan). Create it at https://pitchboom.io/settings/api.",
+          "description": "Optional: a pitchboom API key as a bearer token (Pro or Premium plan), from https://pitchboom.io/settings/api. Leave it empty to sign in with OAuth.",
           "value": "Bearer {api_key}",
-          "isRequired": true,
+          "isRequired": false,
           "isSecret": true,
           "variables": {
             "api_key": {
               "description": "Personal pitchboom API key from https://pitchboom.io/settings/api.",
-              "isRequired": true,
+              "isRequired": false,
               "isSecret": true,
               "format": "string",
               "placeholder": "pb_live_..."

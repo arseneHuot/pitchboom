@@ -37,15 +37,17 @@ Full documentation: https://pitchboom.io/docs/mcp
 
 ## Before you start
 
-1. **A pitchboom account on a plan with the MCP server** (see the table above). Create a personal API key at https://pitchboom.io/settings/api. Keys start with `pb_live_`. You choose the key's permissions when you create it, and you can revoke it there at any time.
-2. **The server:** `https://pitchboom.io/api/mcp`, Streamable HTTP transport, header `Authorization: Bearer <your key>`. pitchboom has no OAuth sign-in yet, so every client below sends the key as a header. The server refuses a key passed in the URL.
-3. **Keep the key out of your files.** Most setups below read it from an environment variable:
+1. **A pitchboom account on a plan with the MCP server** (see the table above).
+2. **The server:** `https://pitchboom.io/api/mcp`, Streamable HTTP transport. Two ways to sign in:
+   - **OAuth 2.1** (claude.ai and Claude Desktop custom connectors, ChatGPT, Claude Code, the MCP Inspector and other clients that support it): add only the URL. The client opens pitchboom, you sign in, approve the app and choose its permissions. Connected apps are listed, and disconnected, at https://pitchboom.io/settings/api.
+   - **Personal API key** for every other client: create it at https://pitchboom.io/settings/api and send `Authorization: Bearer <your key>`. Keys start with `pb_live_`; you choose the key's permissions when you create it and can revoke it there at any time. The server refuses a key passed in the URL.
+3. **Keep a key out of your files.** Most key setups below read it from an environment variable:
 
    ```bash
    export PITCHBOOM_API_KEY=pb_live_YOUR_KEY   # for example in ~/.zshrc; never commit it
    ```
 
-Permission presets offered when you create a key:
+Permission presets offered when you create a key or approve an app:
 
 <!-- BEGIN GENERATED presets (scripts/sync-from-source.mjs): do not edit by hand -->
 | Preset | Permissions | What it allows |
@@ -68,11 +70,13 @@ Install this repository as a plugin. It adds the MCP server and a skill that tel
 
 The plugin reads `PITCHBOOM_API_KEY` from the environment Claude Code was started in. Run `/mcp` to check the connection.
 
-To add only the server, without the skill:
+To add only the server, without the skill, and sign in with OAuth (run `/mcp`, pick pitchboom, then **Authenticate**):
 
 ```bash
-claude mcp add --transport http pitchboom https://pitchboom.io/api/mcp --header "Authorization: Bearer pb_live_YOUR_KEY"
+claude mcp add --transport http pitchboom https://pitchboom.io/api/mcp
 ```
+
+Or with a key: add `--header "Authorization: Bearer pb_live_YOUR_KEY"`.
 
 Add `--scope user` to use it in every project. Docs: [MCP in Claude Code](https://code.claude.com/docs/en/mcp), [plugin marketplaces](https://code.claude.com/docs/en/plugin-marketplaces).
 
@@ -84,7 +88,7 @@ Add `--scope user` to use it in every project. Docs: [MCP in Claude Code](https:
   claude mcp add --transport http --scope user pitchboom https://pitchboom.io/api/mcp --header "Authorization: Bearer pb_live_YOUR_KEY"
   ```
 
-- **Custom connector (claude.ai and Claude Desktop chats):** in **Customize > Connectors**, choose **Add custom connector**, enter `https://pitchboom.io/api/mcp`, choose **No sign-in** under **Authentication**, and under **Request headers** add `authorization` with the value `Bearer pb_live_YOUR_KEY` (with `Bearer` and a space). Anthropic describes request headers as a beta that only some organizations have; if you don't see the section, use another option on this list. On Team and Enterprise plans, everyone who uses the connector shares that key and its credits. See [Authenticate with request headers](https://claude.com/docs/connectors/custom/add-unlisted#authenticate-with-request-headers).
+- **Custom connector (claude.ai, Claude Desktop and mobile chats):** in **Customize > Connectors**, choose **Add custom connector**, enter `https://pitchboom.io/api/mcp` (leave the OAuth client ID and secret empty), then **Connect**: pitchboom opens, you sign in and choose the permissions, and you're back in Claude. On Team and Enterprise plans, each member connects their own pitchboom account.
 - **Claude Desktop chats through a local bridge** (needs Node.js): add this to `claude_desktop_config.json` (macOS: `~/Library/Application Support/Claude/`, Windows: `%APPDATA%\Claude\`) and restart Claude Desktop.
 
   ```json
@@ -178,7 +182,7 @@ Transport:  Streamable HTTP
 Header:     Authorization: Bearer pb_live_YOUR_KEY
 ```
 
-A client that only runs local servers can use the bridge `npx -y mcp-remote@latest https://pitchboom.io/api/mcp --header "Authorization: Bearer <key>"`. Clients that only support OAuth sign-in can't connect yet. To inspect the server, use the MCP Inspector: `npx @modelcontextprotocol/inspector`.
+A client that only runs local servers can use the bridge `npx -y mcp-remote@latest https://pitchboom.io/api/mcp --header "Authorization: Bearer <key>"`. Clients that support OAuth need only the URL. To inspect the server, use the MCP Inspector: `npx @modelcontextprotocol/inspector` (Streamable HTTP, URL only: it signs in with OAuth).
 
 ## The money rule
 
@@ -313,7 +317,7 @@ The files in this repository are under the MIT license ([LICENSE](LICENSE)). Use
 **Pour commencer :** chaque nouveau compte reçoit 500 crédits gratuits, une seule fois à l'inscription, sans carte bancaire. Le serveur MCP est inclus dans les formules Pro (99 € HT par mois) et Premium (300 € HT par mois) ; les comptes gratuits utilisent l'application web.
 <!-- END GENERATED fr -->
 
-- **Adresse du serveur :** `https://pitchboom.io/api/mcp` (Streamable HTTP), avec l'en-tête `Authorization: Bearer pb_live_…`. La clé personnelle se crée sur https://pitchboom.io/settings/api ; ne la mettez jamais dans un fichier partagé ni dans une URL.
+- **Adresse du serveur :** `https://pitchboom.io/api/mcp` (Streamable HTTP). Claude (connecteur personnalisé), ChatGPT, Claude Code et les autres clients compatibles OAuth n'ont besoin que de l'adresse : ils ouvrent pitchboom pour vous connecter et choisir les permissions. Sinon, en-tête `Authorization: Bearer pb_live_…` avec une clé personnelle créée sur https://pitchboom.io/settings/api ; ne la mettez jamais dans un fichier partagé ni dans une URL.
 - **Installation :** dans Claude Code, `/plugin marketplace add arseneHuot/pitchboom` puis `/plugin install pitchboom@pitchboom` ; dans Gemini CLI, `gemini extensions install https://github.com/arseneHuot/pitchboom`. Les autres clients (Cursor, VS Code, Codex, Claude Desktop) sont décrits plus haut.
 - **Règle d'argent :** les outils payants renvoient d'abord un devis. L'assistant vous le montre, vous approuvez ce montant précis, puis seulement il appelle `confirm_operation`. Un devis expire au bout de 30 minutes.
 - Documentation (en anglais) : https://pitchboom.io/docs/mcp · Tarifs : https://pitchboom.io/pricing
