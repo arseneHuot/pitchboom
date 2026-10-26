@@ -1,6 +1,6 @@
 {
   "name": "pitchboom",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Make motion-design video ads with pitchboom.io from Claude Code: brief, quote, approval, render and download. Adds the pitchboom MCP server and a skill.",
   "author": {
     "name": "pitchboom.io",

@@ -52,12 +52,12 @@ Call `get_options` for the exact accepted values, the user's plan limits, voices
 - **Goals** (`goal`, required): `sales` (Sales: Drive purchases. Hard CTA, price on screen); `signups` (Sign-ups: Leads and trials. Clear benefit, clear form); `app_installs` (App installs: Downloads from the stores. Show the app, end on the badge); `launch` (Launch: New drop, big reveal, countdown energy); `awareness` (Awareness: Reach and recall. Loud, shareable, brand first); `explainer` (Explainer: Demo or tutorial. Calm, step by step); `retarget` (Retarget: Warm audiences. Objections, proof, offer).
 - **Platform presets** (`platform`, optional; each sets a default aspect and keeps text clear of the platform's interface): `tiktok` (TikTok, 9:16), `instagram_reels` (Instagram Reels, 9:16), `youtube_shorts` (YouTube Shorts, 9:16), `youtube` (YouTube, 16:9), `facebook` (Facebook / Meta feed, 4:5), `linkedin` (LinkedIn, 1:1), `x` (X, 16:9), `website` (Website / landing page, 16:9).
 - **Aspect ratios** (`aspect`): 16:9, 9:16, 1:1, 4:5, 3:4. Each format is recomposed, not cropped.
-- **Lengths** (`duration_seconds`): 6, 10, 15, 20, 30, 45, 60, 90, 120 seconds. Longest video per plan: free account 30 s, Starter 60 s, Pro 90 s, Premium 120 s.
-- **Qualities** (`quality`): `standard` (Standard, 13 credits per second), `studio` (Studio, 100 credits per second). With screens rebuilt from the user's code: Standard +10, Studio +20 credits per second.
-- **Resolution**: 1080p by default; 4K on Pro and Premium (Pro: +4 credits per second, Premium: included).
+- **Lengths** (`duration_seconds`): 6, 10, 15, 20, 30, 45, 60, 90, 120 seconds. Longest video per plan: free account 30 s, Starter 60 s, Pro 90 s, Premium 120 s, Cinema 120 s.
+- **Qualities** (`quality`): `standard` (Standard, 35 credits per second), `studio` (Studio, 110 credits per second). With screens rebuilt from the user's code: Standard +10, Studio +30 credits per second. `cinema`: Cinema, a directed film, 600 credits per second, 25 s minimum (from 15,000 credits (15 s), Pro, Premium and Cinema), one film per project, code included; it pauses at a concept board (three directions) that `get_production` shows, then `approve_storyboard` once the user agrees.
+- **Resolution**: 1080p by default; 4K on Pro, Premium and Cinema (Pro: +4 credits per second, Premium: included, Cinema: included).
 - **Languages**: 34 languages for the voice-over and translations (codes from `get_options`).
-- **Batches** (`quantity`): independent variants of one brief, up to 10 on Pro and 25 on Premium.
-- **Plans with the MCP server**: Pro and Premium. Free accounts (500 signup credits) use the web app.
+- **Batches** (`quantity`): independent variants of one brief, up to 10 on Pro, 25 on Premium and 25 on Cinema.
+- **Plans with the MCP server**: Pro, Premium and Cinema. Free accounts (875 signup credits) use the web app.
 <!-- END GENERATED options -->
 
 When the user has no preference: pick the platform preset, keep its default aspect, and start with the default length. Offer other formats afterwards with `request_variant` (reformat), which recomposes each scene instead of cropping.

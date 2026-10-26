@@ -3,24 +3,25 @@
 [![mcptry: live status and score](https://mcptry.com/badge/io.pitchboom/pitchboom.svg)](https://mcptry.com/servers/io.pitchboom/pitchboom)
 
 <!-- BEGIN GENERATED intro (scripts/sync-from-source.mjs): do not edit by hand -->
-**pitchboom.io is an AI motion-design studio for video ads.** From a product URL or a short brief, it writes the script, builds an editable storyboard, adds a voice-over and music, and renders MP4 videos (1080p; 4K on Pro and Premium) in 16:9, 9:16, 1:1, 4:5 and 3:4. This repository connects AI assistants (Claude Code, Claude Desktop and claude.ai, Cursor, VS Code, Gemini CLI, Codex) to pitchboom's remote MCP server, so an agent can prepare, price, launch, edit and download videos on your pitchboom account. Paid steps return a quote first, and credits are spent only after you approve it.
+**pitchboom.io is an AI motion-design studio for video ads.** From a product URL or a short brief, it writes the script, builds an editable storyboard, adds a voice-over and music, and renders MP4 videos (1080p; 4K on Pro, Premium and Cinema) in 16:9, 9:16, 1:1, 4:5 and 3:4. This repository connects AI assistants (Claude Code, Claude Desktop and claude.ai, Cursor, VS Code, Gemini CLI, Codex) to pitchboom's remote MCP server, so an agent can prepare, price, launch, edit and download videos on your pitchboom account. Paid steps return a quote first, and credits are spent only after you approve it.
 <!-- END GENERATED intro -->
 
 <!-- BEGIN GENERATED facts (scripts/sync-from-source.mjs): do not edit by hand -->
-**Free to start:** Every new account gets 500 free credits at signup, no card required (about one 30-second Standard video), then plans from €30 a month (excl. VAT) with monthly credits. The MCP server is part of the Pro and Premium plans; free accounts make Standard videos in the web app.
+**Free to start:** Every new account gets 875 free credits at signup, no card required (about one 20-second Standard video), then plans from €30 a month (excl. VAT) with monthly credits. The MCP server is part of the Pro, Premium and Cinema plans; free accounts make Standard videos in the web app.
 
 | Plan | Price per month (excl. VAT) | Credits | MCP server | 4K export | Longest video | Videos per batch |
 | :- | :- | :- | :- | :- | :- | :- |
-| Free account | €0 | 500 once, at signup | No (web app only) | No | 30 s | 1 |
+| Free account | €0 | 875 once, at signup | No (web app only) | No | 30 s | 1 |
 | Starter | €30 | 3,000 per month | No | No | 60 s | 3 |
 | Pro | €99 | 11,000 per month | **Yes** | +4 credits per second | 90 s | 10 |
 | Premium | €300 | 37,500 per month | **Yes** | Included | 120 s | 25 |
+| Cinema | €999 | 133,200 per month | **Yes** | Included | 120 s | 25 |
 
-**What a video costs** (storyboard, voice-over, music and 1080p render included): Standard 13, Studio 100 credits per second; with your code: Standard +10, Studio +20 credits per second. Videos shorter than 15 s are billed as 15 s. Studio videos are billed on at least 20 s; with screens rebuilt from your code, the code surcharge is billed on at least 30 s. Example: a 15-second Standard video is 195 credits (about €1.95 at the Starter rate, €1.56 on Premium). 1 credit = €0.01 at the Starter rate (10% off every credit on Pro and 20% off every credit on Premium).
+**What a video costs** (storyboard, voice-over, music and 1080p render included): Standard 35, Studio 110 credits per second; with your code: Standard +10, Studio +30 credits per second. Videos shorter than 15 s are billed as 15 s. Standard videos are billed on at least 25 s; Studio videos are billed on at least 25 s; with screens rebuilt from your code, the code surcharge is billed on at least 30 s. Example: a 30-second Standard video is 1,050 credits (about €10.50 at the Starter rate, €8.40 on Premium). 1 credit = €0.01 at the Starter rate (10% off every credit on Pro, 20% off every credit on Premium and 25% off every credit on Cinema). Cinema, a directed film, 600 credits per second, 25 s minimum (from 15,000 credits (15 s), Pro, Premium and Cinema): one film per project, code included, with a concept board you approve before production.
 
 **How credits are charged:** Every paid action shows an estimate first. When you confirm, the estimate is held from your balance; each finished step consumes its share, and whatever isn't used is released when the job ends. If a render fails on our side, the credits it consumed are refunded automatically.
 
-Prices as of pricing version 2026-10-24. The live figures are on https://pitchboom.io/pricing and https://pitchboom.io/llms.txt.
+Prices as of pricing version 2026-10-27. The live figures are on https://pitchboom.io/pricing and https://pitchboom.io/llms.txt.
 <!-- END GENERATED facts -->
 
 Full documentation: https://pitchboom.io/docs/mcp
@@ -221,7 +222,7 @@ Prompts to try:
 ## Tools
 
 <!-- BEGIN GENERATED tools (scripts/sync-from-source.mjs): do not edit by hand -->
-The server lists 18 tools to every key:
+The server lists 19 tools to every key:
 
 | Tool | What it does | Key permission | Spends credits |
 | :- | :- | :- | :- |
@@ -235,6 +236,7 @@ The server lists 18 tools to every key:
 | `get_estimate` | Quote (refresh or read) | Read | No |
 | `confirm_operation` | Confirm and spend credits | Spend credits | **Yes**, only after you approve the quote; Claude Code asks you before each call |
 | `get_job_status` | Job progress | Read | No |
+| `get_production` | Cinema production | Read | No |
 | `cancel_job` | Cancel a job | Prepare & edit | No (stops or deletes) |
 | `get_storyboard` | Storyboard | Read | No |
 | `update_storyboard` | Edit a storyboard (free) | Prepare & edit | No |
@@ -314,9 +316,9 @@ The files in this repository are under the MIT license ([LICENSE](LICENSE)). Use
 ## En français
 
 <!-- BEGIN GENERATED fr (scripts/sync-from-source.mjs): do not edit by hand -->
-**pitchboom.io est un studio de motion design par IA pour les publicités vidéo.** À partir de l'URL d'un produit ou d'un court brief, il écrit le script, construit un storyboard modifiable, ajoute une voix off et une musique, et livre des vidéos MP4 (1080p ; 4K avec les formules Pro et Premium) aux formats 16:9, 9:16, 1:1, 4:5 et 3:4. Ce dépôt relie vos assistants IA (Claude Code, Claude Desktop et claude.ai, Cursor, VS Code, Gemini CLI, Codex) au serveur MCP distant de pitchboom.
+**pitchboom.io est un studio de motion design par IA pour les publicités vidéo.** À partir de l'URL d'un produit ou d'un court brief, il écrit le script, construit un storyboard modifiable, ajoute une voix off et une musique, et livre des vidéos MP4 (1080p ; 4K avec les formules Pro, Premium et Cinema) aux formats 16:9, 9:16, 1:1, 4:5 et 3:4. Ce dépôt relie vos assistants IA (Claude Code, Claude Desktop et claude.ai, Cursor, VS Code, Gemini CLI, Codex) au serveur MCP distant de pitchboom.
 
-**Pour commencer :** chaque nouveau compte reçoit 500 crédits gratuits, une seule fois à l'inscription, sans carte bancaire. Le serveur MCP est inclus dans les formules Pro (99 € HT par mois) et Premium (300 € HT par mois) ; les comptes gratuits utilisent l'application web.
+**Pour commencer :** chaque nouveau compte reçoit 875 crédits gratuits, une seule fois à l'inscription, sans carte bancaire. Le serveur MCP est inclus dans les formules Pro (99 € HT par mois), Premium (300 € HT par mois) et Cinema (999 € HT par mois) ; les comptes gratuits utilisent l'application web.
 <!-- END GENERATED fr -->
 
 - **Adresse du serveur :** `https://pitchboom.io/api/mcp` (Streamable HTTP). Claude (connecteur personnalisé), ChatGPT, Claude Code et les autres clients compatibles OAuth n'ont besoin que de l'adresse : ils ouvrent pitchboom pour vous connecter et choisir les permissions. Sinon, en-tête `Authorization: Bearer pb_live_…` avec une clé personnelle créée sur https://pitchboom.io/settings/api ; ne la mettez jamais dans un fichier partagé ni dans une URL.

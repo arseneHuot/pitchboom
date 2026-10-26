@@ -21,8 +21,8 @@ import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
-/** The Cinema quality is behind the `cinema_production` flag, off in production: nothing about it is generated. */
-const CINEMA_PRODUCTION = false;
+/** The Cinema quality is on sale (`cinema_production` flag on in production since 2026-10-26): its facts are generated. */
+const CINEMA_PRODUCTION = true;
 
 const SELF = fileURLToPath(import.meta.url);
 const ROOT = resolve(dirname(SELF), "..");
@@ -100,7 +100,7 @@ function factsBlock() {
     "",
     ...rows,
     "",
-    `**What a video costs** (storyboard, voice-over, music and 1080p render included): ${facts.perSecondRatesLine(f)}; ${facts.codeRatesLine(f)}. Videos shorter than ${f.minBilledSeconds} s are billed as ${f.minBilledSeconds} s. ${facts.offerMinimumsSentence(f)} Example: a 15-second Standard video is ${facts.creditsWithEur(f.video(15, "standard"))}. 1 credit = €${f.creditFaceEur} at the Starter rate${discounts.length ? ` (${and(discounts)})` : ""}.`,
+    `**What a video costs** (storyboard, voice-over, music and 1080p render included): ${facts.perSecondRatesLine(f)}; ${facts.codeRatesLine(f)}. Videos shorter than ${f.minBilledSeconds} s are billed as ${f.minBilledSeconds} s. ${facts.offerMinimumsSentence(f)} Example: a 30-second Standard video is ${facts.creditsWithEur(f.video(30, "standard"))}. 1 credit = €${f.creditFaceEur} at the Starter rate${discounts.length ? ` (${and(discounts)})` : ""}.${f.cinema ? ` ${facts.cinemaRateLine(f.cinema)}: one film per project, code included, with a concept board you approve before production.` : ""}`,
     "",
     `**How credits are charged:** ${facts.creditsLifecycleSentence()}`,
     "",
@@ -160,7 +160,7 @@ function skillOptionsBlock() {
     `- **Platform presets** (\`platform\`, optional; each sets a default aspect and keeps text clear of the platform's interface): ${PLATFORMS.map((p) => `\`${p.id}\` (${p.label}, ${p.defaultAspect})`).join(", ")}.`,
     `- **Aspect ratios** (\`aspect\`): ${f.aspects.join(", ")}. Each format is recomposed, not cropped.`,
     `- **Lengths** (\`duration_seconds\`): ${f.durations.join(", ")} seconds. Longest video per plan: ${planLengths.join(", ")}.`,
-    `- **Qualities** (\`quality\`): ${f.rates.map((r) => `\`${r.offer}\` (${r.label}, ${r.video} credits per second)`).join(", ")}. With screens rebuilt from the user's code: ${f.rates.map((r) => `${r.label} +${r.code}`).join(", ")} credits per second.`,
+    `- **Qualities** (\`quality\`): ${f.rates.map((r) => `\`${r.offer}\` (${r.label}, ${r.video} credits per second)`).join(", ")}. With screens rebuilt from the user's code: ${f.rates.map((r) => `${r.label} +${r.code}`).join(", ")} credits per second.${f.cinema ? ` \`cinema\`: ${facts.cinemaRateLine(f.cinema)}, one film per project, code included; it pauses at a concept board (three directions) that \`get_production\` shows, then \`approve_storyboard\` once the user agrees.` : ""}`,
     `- **Resolution**: 1080p by default; 4K on ${and(fourKPlans)} (${f.plans
       .filter((p) => p.fourK !== "none")
       .map((p) => `${p.name}: ${fourK(p).toLowerCase()}`)

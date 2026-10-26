@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2.0 (2026-10-26)
+
+- The Cinema quality and the Cinema plan are on sale: `create_project` takes `quality: "cinema"` (a directed film, one per project, code included) on the Pro, Premium and Cinema plans; it pauses at a concept board that the new `get_production` tool shows, then `approve_storyboard` once the user agrees.
+- New prices (pricing version 2026-10-27): Standard 35, Studio 110, Cinema 600 credits per second, Standard and Studio billed on at least 25 s; 875 free credits at signup; Cinema plan €999 a month with 133,200 credits (25% off every credit).
+- The MCP server is part of the Pro, Premium and Cinema plans (`server.json`, Cursor and Gemini CLI settings).
+- Plugin manifests move to 1.2.0 so clients pick up the updated agent skill.
+
 ## 1.1.0 (2026-10-25)
 
 - OAuth 2.1 sign-in: clients that support it (claude.ai and Claude Desktop custom connectors, ChatGPT, Claude Code, the MCP Inspector) need only `https://pitchboom.io/api/mcp`; the user approves the app on pitchboom and picks its permissions. Protected resource metadata at `https://pitchboom.io/.well-known/oauth-protected-resource/api/mcp`.

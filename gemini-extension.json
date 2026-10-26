@@ -1,6 +1,6 @@
 {
   "name": "pitchboom",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Make motion-design video ads with pitchboom.io from Gemini CLI: brief, quote, approval, render and download.",
   "mcpServers": {
     "pitchboom": {
@@ -14,7 +14,7 @@
   "settings": [
     {
       "name": "pitchboom API key",
-      "description": "Personal pitchboom API key (pb_live_...), created at https://pitchboom.io/settings/api. The MCP server needs the Pro or Premium plan.",
+      "description": "Personal pitchboom API key (pb_live_...), created at https://pitchboom.io/settings/api. The MCP server needs the Pro, Premium or Cinema plan.",
       "envVar": "PITCHBOOM_API_KEY",
       "sensitive": true
     }
