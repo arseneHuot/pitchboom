@@ -1,5 +1,7 @@
 # pitchboom MCP server: make video ads from your AI assistant
 
+[![mcptry: live status and score](https://mcptry.com/badge/io.pitchboom/pitchboom.svg)](https://mcptry.com/servers/io.pitchboom/pitchboom)
+
 <!-- BEGIN GENERATED intro (scripts/sync-from-source.mjs): do not edit by hand -->
 **pitchboom.io is an AI motion-design studio for video ads.** From a product URL or a short brief, it writes the script, builds an editable storyboard, adds a voice-over and music, and renders MP4 videos (1080p; 4K on Pro and Premium) in 16:9, 9:16, 1:1, 4:5 and 3:4. This repository connects AI assistants (Claude Code, Claude Desktop and claude.ai, Cursor, VS Code, Gemini CLI, Codex) to pitchboom's remote MCP server, so an agent can prepare, price, launch, edit and download videos on your pitchboom account. Paid steps return a quote first, and credits are spent only after you approve it.
 <!-- END GENERATED intro -->
